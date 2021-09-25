@@ -8,7 +8,7 @@ end)
 
 
 RegisterNetEvent('secretstash')
-AddEventHandler('secretstash', function(baap, info, slot)
+AddEventHandler('secretstash', function(ident, info, slot)
     local me = PlayerPedId()
     local plate = GetVehicleNumberPlateText(GetVehiclePedIsIn(me))
     local car = GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsIn(me)))
@@ -33,7 +33,7 @@ AddEventHandler('secretstash', function(baap, info, slot)
                         slots = 10,
                     })
                     TriggerEvent("inventory:client:SetCurrentStash", plate.."SS")
-                    TriggerServerEvent('regsecretstash', car, plate, baap, slot)
+                    TriggerServerEvent('regsecretstash', car, plate, ident, slot)
                 elseif info.ss == plate then
                     TriggerServerEvent("inventory:server:OpenInventory", "stash", plate.."SS", {
                         maxweight = 40000,
@@ -46,7 +46,7 @@ AddEventHandler('secretstash', function(baap, info, slot)
             else
                 QBCore.Functions.Notify("You dont't own this Vehicle", "error")
             end
-        end, plate, baap)
+        end, plate, ident)
     end, function() -- Cancel
         ExecuteCommand('e c')
         QBCore.Functions.Notify("Canceled..", "error")

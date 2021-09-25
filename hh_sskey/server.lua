@@ -10,16 +10,16 @@ QBCore.Functions.CreateUseableItem("stashkey", function(source, item)
 end)
 
 RegisterServerEvent('regsecretstash')
-AddEventHandler('regsecretstash', function(car, plate, malik, slot)
-    local malik2 = QBCore.Functions.GetPlayerByCitizenId(malik)
-    if malik2.Functions.GetItemBySlot(slot) ~= nil then
-        malik2.Functions.RemoveItem('stashkey', 1)
-        local name = malik2.PlayerData.charinfo.firstname .. ' ' .. malik2.PlayerData.charinfo.lastname
+AddEventHandler('regsecretstash', function(car, plate, ident, slot)
+    local Player = QBCore.Functions.GetPlayerByCitizenId(ident)
+    if Player.Functions.GetItemBySlot(slot) ~= nil then
+        Player.Functions.RemoveItem('stashkey', 1)
+        local name = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
         local info = {}
         info.car = car
         info.ss = plate
         info.owner = name
-        malik2.Functions.AddItem('stashkey', 1, nil, info)
+        Player.Functions.AddItem('stashkey', 1, nil, info)
     else
         print('SLOT CHANGED')
     end

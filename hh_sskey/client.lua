@@ -40,7 +40,6 @@ AddEventHandler('secretstash', function(baap, info, slot)
                         slots = 10,
                     })
                     TriggerEvent("inventory:client:SetCurrentStash", plate.."SS")
-                    TriggerServerEvent('regsecretstash', car, plate, baap, slot)
                 else
                     QBCore.Functions.Notify("Key Mismatch", "error")
                 end

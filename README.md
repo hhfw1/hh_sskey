@@ -1,5 +1,5 @@
-# hh_sskey
-Secret Vehicle Storage Key for QBCore
+# Secret Vehicle Storage Key for QBCore
+hh_sskey
 
 Features
 

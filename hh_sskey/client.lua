@@ -1,18 +1,10 @@
-QBCore = nil
-Citizen.CreateThread(function()
-    while QBCore == nil do
-        TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
-        Citizen.Wait(200)
-    end
-end)
+local QBCore = exports['qb-core']:GetCoreObject()
 
 
-RegisterNetEvent('secretstash')
-AddEventHandler('secretstash', function(ident, info, slot)
+RegisterNetEvent('secretstash', function(ident, info, slot)
     local me = PlayerPedId()
     local plate = GetVehicleNumberPlateText(GetVehiclePedIsIn(me))
     local car = GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsIn(me)))
-    print(info.ss, info.owner, info.car)
     if not IsPedSittingInAnyVehicle(me) then
         QBCore.Functions.Notify("You cant use Stash Key Inside", "error")
         return

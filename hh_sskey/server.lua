@@ -1,24 +1,3 @@
-RegisterCommand("rope", function()
-    local ped = PlayerPedId()
-    local pos = GetEntityCoords(ped)
-    RopeLoadTextures() 
-    while not RopeAreTexturesLoaded() do Wait(1) 
-    end
-    local rope = AddRope(pos.x, pos.y, pos.z, 0.0, 0.0, 0.0, 5.0, 5, 5.0, 0.0, 0.0, false, true, true, 1.0, false, 0)
-    LoadRopeData(rope, 'ropeFamily3')
-    StartRopeWinding(rope)
-    RequestModel(`a_f_m_beach_01`)
-    while not HasModelLoaded(`a_f_m_beach_01`) do
-        Wait(1)
-    end
-    local npc = CreatePed(0, `a_f_m_beach_01`, pos.x+2, pos.y+2, pos.z, 60.0, true)
-    Wait(1000)
-    local pos2 = GetEntityCoords(npc)
-    AttachEntitiesToRope(rope, ped, npc, pos.x, pos.y, pos.z, pos2.x, pos2.y, pos2.z, 5.0, 0, 0, nil, nil)
-end)
-
-
-
 local QBCore = exports['qb-core']:GetCoreObject()
 
 
